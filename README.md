@@ -1,21 +1,30 @@
 # Contact Form with GitHub Storage
 
-A contact/membership form that stores submissions directly to a private GitHub repository CSV file. The form is designed to be embedded in a Jimdo website via iframe and hosted on GitHub Pages.
+A contact/membership form that stores submissions directly to a private GitHub repository CSV file. The form is designed to be embedded in a Jimdo website via iframe and hosted on Vercel.
+
+## Quick Overview
+
+1. **Deploy to Vercel** - Frontend (form) + Backend (API) hosted together
+2. **Configure GitHub token** - Allows API to write to your private repository
+3. **Embed in Jimdo** - Add iframe pointing to your Vercel URL
+4. **Done!** - Form submissions automatically save to `members.csv`
 
 ## Features
 
 - ✅ Clean, responsive contact form in German
 - ✅ Stores data directly to `members.csv` in a private GitHub repository
 - ✅ Serverless backend (Vercel)
+- ✅ Frontend and backend on the same domain (simplified architecture)
 - ✅ CORS-enabled for iframe embedding
 - ✅ Form validation
 - ✅ Loading states and success/error messages
+- ✅ No GitHub Pages needed - deploy once to Vercel!
 
 ## Project Structure
 
 ```
-contact-form/
-├── index.html          # Main form page
+contact-form/ (GitHub → Vercel)
+├── index.html          # Main form page (served by Vercel)
 ├── styles.css          # Form styling
 ├── script.js           # Form submission logic
 ├── api/
@@ -28,14 +37,16 @@ member-list/ (Private Repository)
 ├── members.csv         # Member data storage
 └── .github/
     └── workflows/
-        └── add-member.yml  # GitHub Actions workflow (optional)
+        └── add-member.yml  # GitHub Actions workflow (optional/unused)
 ```
 
 ## Setup Instructions
 
-**Important:** Make sure the `member-list` repository is set to **private** in GitHub settings (Settings → Danger Zone → Change visibility).
+**Prerequisites:**
+- Both `contact-form` and `member-list` repositories pushed to GitHub
+- The `member-list` repository must be **private** (Settings → Danger Zone → Change visibility)
 
-### 1. Create GitHub Personal Access Token (only once)
+### 1. Create GitHub Personal Access Token
 
 1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
 2. Click "Generate new token (classic)"
@@ -81,37 +92,13 @@ member-list/ (Private Repository)
    - Click **Redeploy**
    - Wait for redeployment to complete
 
-### 4. Update API Endpoint
+### 4. Embed in Jimdo Website
 
-1. After deployment, Vercel will give you a URL like `https://your-project.vercel.app`
-2. Open `script.js` in your contact-form repository
-3. Update line 1:
-   ```javascript
-   const API_ENDPOINT = 'https://your-project.vercel.app/api/submit';
-   ```
-4. Commit and push the change:
-   ```bash
-   git add script.js
-   git commit -m "Update API endpoint"
-   git push
-   ```
-
-### 5. Enable GitHub Pages
-
-1. Go to your `contact-form` repository on GitHub
-2. Click "Settings" → "Pages"
-3. Under "Source", select "Deploy from a branch"
-4. Select `main` branch and `/ (root)` folder
-5. Click "Save"
-6. Your form will be available at: `https://your-username.github.io/contact-form/`
-
-### 6. Embed in Jimdo Website
-
-Add this HTML code to your Jimdo page where you want the form:
+Your form is now live on Vercel! Simply embed it in your Jimdo page:
 
 ```html
 <iframe
-  src="https://your-username.github.io/contact-form/"
+  src="https://your-project.vercel.app/"
   width="100%"
   height="900"
   frameborder="0"
@@ -119,18 +106,23 @@ Add this HTML code to your Jimdo page where you want the form:
 </iframe>
 ```
 
-**Replace `your-username` with your actual GitHub username.**
+**Replace `your-project.vercel.app` with your actual Vercel deployment URL from step 2.**
+
+**Note:** The form and API are both on the same Vercel domain, so no GitHub Pages setup is needed!
 
 ## How It Works
 
-1. **User fills out the form** on your Jimdo website (embedded via iframe)
-2. **Form submits data** to the Vercel serverless function (`/api/submit`)
-3. **Serverless function**:
+1. **User visits your Jimdo website** with the embedded Vercel iframe
+2. **User fills out the form** (served from Vercel)
+3. **Form submits data** to the Vercel serverless function (`/api/submit`)
+4. **Serverless function**:
    - Validates the data
    - Uses GitHub API to fetch current `members.csv`
    - Appends new member data as a CSV row
    - Commits the updated file back to the private `member-list` repository
-4. **User receives confirmation** message
+5. **User receives confirmation** message
+
+**Architecture:** Vercel hosts both the form (HTML/CSS/JS) and the backend API, making it simple and efficient!
 
 ## Security Considerations
 

@@ -1,4 +1,5 @@
-const API_ENDPOINT = 'https://contact-form-azure-pi.vercel.app/api/submit';
+// Use relative path since frontend and backend are on the same Vercel domain
+const API_ENDPOINT = '/api/submit';
 
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
