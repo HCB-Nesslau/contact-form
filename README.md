@@ -98,18 +98,13 @@ Your form is now live on Vercel! Simply embed it in your Jimdo page:
 
 ```html
 <iframe
-  src="https://your-project.vercel.app/"
+  src="https://contact-form-azure-pi.vercel.app/"
   width="100%"
   height="900"
   frameborder="0"
   style="border: none; max-width: 800px; margin: 0 auto; display: block;">
 </iframe>
 ```
-
-**Replace `your-project.vercel.app` with your actual Vercel deployment URL from step 2.**
-
-**Note:** The form and API are both on the same Vercel domain, so no GitHub Pages setup is needed!
-
 ## How It Works
 
 1. **User visits your Jimdo website** with the embedded Vercel iframe
