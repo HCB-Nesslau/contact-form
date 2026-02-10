@@ -14,11 +14,12 @@ body {
 .container {
     max-width: 700px;
     margin: 0 auto;
+    padding: 0;
 }
 
 .form-wrapper {
     background: transparent;
-    padding: 20px;
+    padding: 0;
 }
 
 .form-group {
@@ -159,7 +160,7 @@ select {
 
 @media (max-width: 600px) {
     .form-wrapper {
-        padding: 15px;
+        padding: 0;
     }
 
     .form-row {
