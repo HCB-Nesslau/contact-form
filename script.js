@@ -26,7 +26,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         ort: document.getElementById('ort').value,
         email: document.getElementById('email').value,
         tel: document.getElementById('tel').value || '',
-        status: document.getElementById('status').value,
+        status: 'PM', // Always set to Passivmitglied
         betrag: document.getElementById('betrag').value,
         beitritt: new Date().getFullYear().toString(),
         referenz: document.getElementById('referenz').value || ''
