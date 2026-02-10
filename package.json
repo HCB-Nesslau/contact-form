@@ -1,0 +1,23 @@
+{
+  "name": "contact-form",
+  "version": "1.0.0",
+  "description": "Contact form for member registration with GitHub storage",
+  "main": "api/submit.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "contact-form",
+    "github",
+    "serverless"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^20.0.2"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
