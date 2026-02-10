@@ -1,5 +1,4 @@
-// Configuration - UPDATE THIS URL after deploying the backend
-const API_ENDPOINT = 'https://your-backend-url.vercel.app/api/submit';
+const API_ENDPOINT = 'https://contact-form-azure-pi.vercel.app/api/submit';
 
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();

@@ -33,27 +33,9 @@ member-list/ (Private Repository)
 
 ## Setup Instructions
 
-### 0. Push Repositories to GitHub
-
-Before deploying, make sure both repositories are pushed to GitHub:
-
-```bash
-# Push contact-form repository
-cd contact-form
-git add .
-git commit -m "Initial commit with contact form"
-git push
-
-# Push member-list repository (if not already pushed)
-cd ../member-list
-git add .
-git commit -m "Initial commit with member data"
-git push
-```
-
 **Important:** Make sure the `member-list` repository is set to **private** in GitHub settings (Settings → Danger Zone → Change visibility).
 
-### 1. Create GitHub Personal Access Token
+### 1. Create GitHub Personal Access Token (only once)
 
 1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
 2. Click "Generate new token (classic)"
@@ -103,7 +85,7 @@ git push
 
 1. After deployment, Vercel will give you a URL like `https://your-project.vercel.app`
 2. Open `script.js` in your contact-form repository
-3. Update line 2:
+3. Update line 1:
    ```javascript
    const API_ENDPOINT = 'https://your-project.vercel.app/api/submit';
    ```
