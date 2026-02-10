@@ -100,11 +100,14 @@ Your form is now live on Vercel! Simply embed it in your Jimdo page:
 <iframe
   src="https://contact-form-azure-pi.vercel.app/"
   width="100%"
-  height="900"
+  height="1100"
   frameborder="0"
-  style="border: none; max-width: 800px; margin: 0 auto; display: block;">
+  scrolling="no"
+  style="border: none; max-width: 800px; margin: 0 auto; display: block; overflow: hidden;">
 </iframe>
 ```
+
+**Note:** Adjust the `height` value if needed to fit your form perfectly without scrolling.
 ## How It Works
 
 1. **User visits your Jimdo website** with the embedded Vercel iframe
